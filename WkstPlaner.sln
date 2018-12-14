@@ -3,9 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{DE718AA9-D1CC-4E63-9405-14CEDD487BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{DE718AA9-D1CC-4E63-9405-14CEDD487BEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolSchemeMigration", "ToolSchemeMigration\ToolSchemeMigration.csproj", "{1C29EDFD-D881-4DC7-BD0D-103345320033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToolSchemeMigration", "ToolSchemeMigration\ToolSchemeMigration.csproj", "{1C29EDFD-D881-4DC7-BD0D-103345320033}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56D9C397-C6B0-482A-98E8-B3C6106B42D8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefOpTester", "DefOpTester\DefOpTester.csproj", "{DFA39AA4-9DC9-440B-BB63-94393C0A5E59}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF} = {FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseHelper", "DataBaseHelper\DataBaseHelper.csproj", "{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +36,14 @@ Global
 		{1C29EDFD-D881-4DC7-BD0D-103345320033}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C29EDFD-D881-4DC7-BD0D-103345320033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C29EDFD-D881-4DC7-BD0D-103345320033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFA39AA4-9DC9-440B-BB63-94393C0A5E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFA39AA4-9DC9-440B-BB63-94393C0A5E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFA39AA4-9DC9-440B-BB63-94393C0A5E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFA39AA4-9DC9-440B-BB63-94393C0A5E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0BE18B-852B-48EB-ABA4-C18CB06FBDEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

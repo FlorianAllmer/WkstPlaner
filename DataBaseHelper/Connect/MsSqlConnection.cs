@@ -1,20 +1,19 @@
 ﻿using System.Data.SqlClient;
 
-
-namespace HtlWeiz.WkstPlaner.Model.Tools
+namespace HtlWeiz.WkstPlaner.DataBaseHelper.Connect
 
 {
-
-    public class MsSqlConnection : IConnection
+    public class MsSqlConnection : IConnectionDefinition
     {
         #region connection Parameter
 
-        public string Server { private get;  set; }
-        public string Catalog { private get; set; }
-        public bool UseWindowsAuthentication { private get; set; }
-        public string User { private get; set; }
-        public string Password { private get; set; }
+        public string Server { get;  set; }
+        public string Catalog { get; set; }
+        public bool UseWindowsAuthentication { get; set; }
+        public string User { get; set; }
+        public string Password { get; set; }
         public int Timeout { get; set; } = 15;
+        public bool MultipleActiveResultsets { get; set; }
         #endregion
 
         #region States
@@ -35,7 +34,7 @@ namespace HtlWeiz.WkstPlaner.Model.Tools
         public string ConnectionString => GenerateConnectionString();
 
 
-        internal MsSqlConnection() {}
+        public MsSqlConnection() {}
 
 
         private bool CheckServerParameter()
@@ -98,7 +97,8 @@ namespace HtlWeiz.WkstPlaner.Model.Tools
 
             builder.ConnectTimeout = Timeout;
             if (!string.IsNullOrEmpty(Catalog)) builder.InitialCatalog = Catalog;
-
+            builder.MultipleActiveResultSets = MultipleActiveResultsets;
+            
             return builder.ConnectionString;
         }
 

@@ -1,0 +1,81 @@
+﻿<Window x:Class="HtlWeiz.WkstPlaner.DefOpTester.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HtlWeiz.WkstPlaner.DefOpTester"
+        xmlns:viewModels="clr-namespace:HtlWeiz.WkstPlaner.DefOpTester.ViewModels"
+
+        mc:Ignorable="d"
+        Title="DevOp Tester" Height="450" Width="800">
+    <Grid x:Name="GridMain"
+          Background="Cyan">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="GridSqlConnection">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="LabelServerName"
+                   Grid.Row="0" Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Content="Server"/>
+            <TextBox x:Name="TextBoxServerName"
+                     Grid.Row="0" Grid.Column="1"
+                     VerticalAlignment="Center"
+                     Text="{Binding Path=Server}"
+                     IsEnabled="False"/>
+            <Label x:Name="LabelCatalog"
+                   Grid.Row="0" Grid.Column="2"
+                   VerticalAlignment="Center"
+                   Content="Datenbank"/>
+            <TextBox x:Name="TextBoxCatalog"
+                     Grid.Row="0" Grid.Column="3"
+                     VerticalAlignment="Center"
+                     Text="{Binding Path=Catalog}"
+                     IsEnabled="False"/>
+            <Label x:Name="LabelTrustecConnection"
+                   Grid.Row="0" Grid.Column="4"
+                   VerticalAlignment="Center"
+                   Content="Windows Authenifikation"/>
+            <CheckBox x:Name="CheckBoxTrustecConnection"
+                      Grid.Row="0" Grid.Column="5"
+                      VerticalAlignment="Center"
+                      IsChecked="{Binding Path=UseWindowsAuthenication}"
+                      IsEnabled="False"/>
+            <Label x:Name="LabelUser"
+                   Grid.Row="1" Grid.Column="0"
+                   VerticalAlignment="Center"
+                   Content="BenutzerId"/>
+            <TextBox x:Name="TextBoxUser"
+                     Grid.Row="1" Grid.Column="1"
+                     VerticalAlignment="Center"
+                     Text="{Binding Path=User}"
+                     IsEnabled="False"/>
+            <Label x:Name="LabelPassword"
+                   Grid.Row="1" Grid.Column="2"
+                   VerticalAlignment="Center"
+                   Content="Kennwort"/>
+            <TextBox x:Name="TextBoxPassword"
+                     Grid.Row="1" Grid.Column="3"
+                     VerticalAlignment="Center"
+                     Text="{Binding Path=Password}"
+                     IsEnabled="False"/>
+
+        </Grid>
+    </Grid>
+</Window>

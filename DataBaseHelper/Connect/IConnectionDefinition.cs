@@ -1,13 +1,13 @@
 ﻿
-namespace HtlWeiz.WkstPlaner.Model.Tools
+namespace HtlWeiz.WkstPlaner.DataBaseHelper.Connect
 {
-    interface IConnection
+    public interface IConnectionDefinition
     {
-        string Server { set; }
-        string Catalog { set; }
-        bool UseWindowsAuthentication { set; }
-        string User { set; }
-        string Password { set; }
+        string Server { get; set; }
+        string Catalog { get; set; }
+        bool UseWindowsAuthentication { get; set; }
+        string User { get; set; }
+        string Password { get; set; }
         int Timeout { get; set; }
         string State { get; }
 

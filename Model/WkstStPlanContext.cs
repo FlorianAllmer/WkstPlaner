@@ -6,13 +6,16 @@ namespace HtlWeiz.WkstPlaner.Model
 {
     public partial class WkstStPlanContext : DbContext
     {
-        public WkstStPlanContext()
+        private readonly string connectionString;
+        public WkstStPlanContext(string connectionString)
         {
+            this.connectionString = connectionString;
         }
 
-        public WkstStPlanContext(DbContextOptions<WkstStPlanContext> options)
+        public WkstStPlanContext(DbContextOptions<WkstStPlanContext> options, string connectionString)
             : base(options)
         {
+            this.connectionString = connectionString;
         }
 
         public virtual DbSet<TblFahrgemeinschaften> TblFahrgemeinschaften { get; set; }
@@ -49,8 +52,8 @@ namespace HtlWeiz.WkstPlaner.Model
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=HQDATABASES01\\MSSQL2016_DEV; Database=WkstStPlan;Trusted_Connection=True;MultipleActiveResultsets=True;");
+                optionsBuilder.UseSqlServer(connectionString);
+                // "Server=HQDATABASES01\\MSSQL2016_DEV; Database=WkstStPlan;Trusted_Connection=True;MultipleActiveResultsets=True;"
             }
         }
 
