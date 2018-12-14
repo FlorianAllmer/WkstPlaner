@@ -24,9 +24,9 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
             switch (user)
             {
                 case EnumUser.HqHome:
-                    return conParHqHome();
+                    return ConParHqHome();
                 case EnumUser.HqRemote:
-                    return conParHqRemote();
+                    return ConParHqRemote();
 
             }
             ;
@@ -34,7 +34,7 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
             return new MsSqlConnection();
         }
 
-        private static IConnectionDefinition conParHqHome()
+        private static IConnectionDefinition ConParHqHome()
         {
             var connection = new MsSqlConnection
             {
@@ -48,7 +48,7 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
 
         }
 
-        private static IConnectionDefinition conParHqRemote()
+        private static IConnectionDefinition ConParHqRemote()
         {
             var connection = new MsSqlConnection
             {
