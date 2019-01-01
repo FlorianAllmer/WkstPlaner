@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HtlWeiz.WkstPlaner.Contracts.DataAccess;
+using HtlWeiz.WkstPlaner.DefOpTester.Init;
 
 namespace HtlWeiz.WkstPlaner.DefOpTester.View
 {
@@ -24,9 +26,8 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.View
         public MainWindow()
         {
             InitializeComponent();
-         
-            DataContext = new VmMainMaster();
-
+            var myContextFactory = new ContextFactory();
+            DataContext = new VmMainMaster(myContextFactory.Context, myContextFactory.ConnectionDefinition);
         }
     }
 }

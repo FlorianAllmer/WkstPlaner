@@ -140,7 +140,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Init\ContextFactory.cs" />
     <Compile Include="Init\InitConnection.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\VmMainMaster.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -175,6 +177,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contracts\Contracts.csproj">
+      <Project>{22285e73-2636-4a2d-83cb-f407be33e1ab}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataBaseHelper\DataBaseHelper.csproj">
       <Project>{fe0be18b-852b-48eb-aba4-c18cb06fbdef}</Project>
       <Name>DataBaseHelper</Name>

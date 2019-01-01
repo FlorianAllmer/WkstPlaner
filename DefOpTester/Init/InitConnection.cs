@@ -14,7 +14,7 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
     {
          HqHome
         ,HqRemote
-          
+        ,LocalExpressDomainUser  
     }
     static class InitConnection
     {
@@ -27,7 +27,8 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
                     return ConParHqHome();
                 case EnumUser.HqRemote:
                     return ConParHqRemote();
-
+                case EnumUser.LocalExpressDomainUser:
+                    return ConParLocalExpressDomainUser();
             }
             ;
 
@@ -57,6 +58,19 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.Init
                 UseWindowsAuthentication = false,
                 User = "hquinz",
                 Password = "purzl",
+                MultipleActiveResultsets = true
+            };
+
+            return connection;
+        }
+
+        private static IConnectionDefinition ConParLocalExpressDomainUser()
+        {
+            var connection = new MsSqlConnection
+            {
+                Server = ".\\SQLEXPRESS",
+                Catalog = "WkstStPlan",
+                UseWindowsAuthentication = true,
                 MultipleActiveResultsets = true
             };
 

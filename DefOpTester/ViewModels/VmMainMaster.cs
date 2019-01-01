@@ -7,10 +7,14 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using HtlWeiz.WkstPlaner.Contracts.DataAccess;
 using HtlWeiz.WkstPlaner.DataBaseHelper.Connect;
 using HtlWeiz.WkstPlaner.DefOpTester.Init;
-using HtlWeiz.WkstPlaner.Model;
+using HtlWeiz.WkstPlaner.Model.context;
+using HtlWeiz.WkstPlaner.Model.tables;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 
 namespace HtlWeiz.WkstPlaner.DefOpTester.ViewModels
@@ -22,6 +26,7 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.ViewModels
 
 
         private readonly IConnectionDefinition _myConnectionParameter;
+        private readonly IContextFactory _myContextFactory;
         public string Server
         {
             get => _myConnectionParameter.Server;
@@ -73,13 +78,25 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.ViewModels
 
         public List<TblPersonen> Personen => MyModel.TblPersonen.Select(x => x).ToList();
 
-        public VmMainMaster()
+        public VmMainMaster(IContextFactory contextFactory, IConnectionDefinition connectionDefinition)
         {
-            _myConnectionParameter = InitConnection.GetConnectionParameter(EnumUser.HqRemote);
+            _myConnectionParameter = connectionDefinition;
+            _myContextFactory = contextFactory;
+            MyModel = (WkstStPlanContext)contextFactory.Context;
             ChangedAllPropertys();
-            MyModel = new WkstStPlanContext(_myConnectionParameter.ConnectionString);
-            
         }
+
+        #region commands
+        public ICommand OnStoreSettingsCommand => new RelayCommand<object>(StoreConnectionStringToSetings);
+
+        private void StoreConnectionStringToSetings(object dummy)
+        {
+            _myContextFactory.StoreSettingsToConfigFile();
+        }
+
+
+        #endregion
+
 
         #region Property changed handling
         public event PropertyChangedEventHandler PropertyChanged;

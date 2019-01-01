@@ -74,6 +74,13 @@
                      VerticalAlignment="Center"
                      Text="{Binding Path=Password}"
                      IsEnabled="False"/>
+            <Button x:Name="ButtonStoreConnectionString"
+                    Grid.Row="1" Grid.Column="4"
+                    VerticalAlignment="Center"
+                    Width="Auto" Height="Auto"
+                    Content="In Config - Datei schreiben"
+                    Command="{Binding OnStoreSettingsCommand}"
+                    ></Button>
 
         </Grid>
         <Grid x:Name ="GridData"
