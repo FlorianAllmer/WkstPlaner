@@ -1,0 +1,2 @@
+dotnet ef dbcontext scaffold "Server=HQDATABASES01\MSSQL2016_DEV;Database=WkstStPlan;Trusted_Connection=True; MultipleActiveResultSets=True;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Modell
+pause
