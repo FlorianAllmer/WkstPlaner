@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace HtlWeiz.WkstPlaner.Model.context
+namespace HtlWeiz.WkstPlaner.WkstPlanContext
 {
     public class  JsonSetingsStorage<T> : ISetingsStorage<T>
     {

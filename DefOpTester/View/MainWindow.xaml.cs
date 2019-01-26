@@ -26,7 +26,8 @@ namespace HtlWeiz.WkstPlaner.DefOpTester.View
         public MainWindow()
         {
             InitializeComponent();
-            var myContextFactory = new ContextFactory();
+            //var myContextFactory = new ContextFactory();
+            var myContextFactory = new ContextFactory(EnumUser.LocalExpressDomainUser);
             DataContext = new VmMainMaster(myContextFactory.Context, myContextFactory.ConnectionDefinition);
         }
     }

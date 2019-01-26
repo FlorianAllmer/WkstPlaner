@@ -1,7 +1,7 @@
 ﻿using System;
 using HtlWeiz.WkstPlaner.Contracts.DataAccess;
 using HtlWeiz.WkstPlaner.DataBaseHelper.Connect;
-using HtlWeiz.WkstPlaner.Model.context;
+using HtlWeiz.WkstPlaner.WkstPlanContext;
 
 namespace HtlWeiz.WkstPlaner.DefOpTester.Init
 {

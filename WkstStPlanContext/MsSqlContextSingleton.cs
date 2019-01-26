@@ -2,7 +2,7 @@
 using HtlWeiz.WkstPlaner.Contracts.DataAccess;
 using Microsoft.EntityFrameworkCore;
 
-namespace HtlWeiz.WkstPlaner.Model.context
+namespace HtlWeiz.WkstPlaner.WkstPlanContext
 {
     public class MsSqlContextSingleton : IContextFactory
 

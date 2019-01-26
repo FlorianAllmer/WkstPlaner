@@ -186,8 +186,12 @@
       <Name>DataBaseHelper</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{632cf1b6-975b-40b4-96d3-f80b17a46dc5}</Project>
+      <Project>{eb7d9e3d-a429-481d-ac1d-6c46180c5f64}</Project>
       <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WkstStPlanContext\WkstPlanContext.csproj">
+      <Project>{6750743a-6920-486c-9569-b51e1ea7486a}</Project>
+      <Name>WkstPlanContext</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

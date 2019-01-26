@@ -1,7 +1,7 @@
 ﻿using HtlWeiz.WkstPlaner.Model.tables;
 using Microsoft.EntityFrameworkCore;
 
-namespace HtlWeiz.WkstPlaner.Model.context
+namespace HtlWeiz.WkstPlaner.WkstPlanContext
 {
     public partial class WkstStPlanContext : DbContext
     {

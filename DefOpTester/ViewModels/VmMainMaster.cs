@@ -11,8 +11,8 @@ using System.Windows.Input;
 using HtlWeiz.WkstPlaner.Contracts.DataAccess;
 using HtlWeiz.WkstPlaner.DataBaseHelper.Connect;
 using HtlWeiz.WkstPlaner.DefOpTester.Init;
-using HtlWeiz.WkstPlaner.Model.context;
 using HtlWeiz.WkstPlaner.Model.tables;
+using HtlWeiz.WkstPlaner.WkstPlanContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 

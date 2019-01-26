@@ -1,7 +1,6 @@
-﻿using System;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace HtlWeiz.WkstPlaner.Model.context
+namespace HtlWeiz.WkstPlaner.WkstPlanContext
 {
     [DataContract]
     internal class PocoSetings

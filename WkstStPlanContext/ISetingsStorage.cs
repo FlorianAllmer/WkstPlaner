@@ -1,4 +1,4 @@
-namespace HtlWeiz.WkstPlaner.Model.context
+namespace HtlWeiz.WkstPlaner.WkstPlanContext
 {
     public interface ISetingsStorage<T>
     {
