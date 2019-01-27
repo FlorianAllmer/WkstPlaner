@@ -1,4 +1,7 @@
-﻿namespace HtlWeiz.WkstPlaner.Model.tables
+﻿using System;
+using System.Collections.Generic;
+
+namespace HtlWeiz.WkstPlaner.Model.tables
 {
     public partial class TblLehrfachLehrkraft
     {

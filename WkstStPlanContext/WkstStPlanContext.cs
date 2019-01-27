@@ -17,6 +17,7 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
             this._connectionString = connectionString;
         }
 
+        #region Propertys
         public virtual DbSet<TblFahrgemeinschaften> TblFahrgemeinschaften { get; set; }
         public virtual DbSet<TblFreieTage> TblFreieTage { get; set; }
         public virtual DbSet<TblKlassen> TblKlassen { get; set; }
@@ -33,6 +34,7 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
         public virtual DbSet<TblLehrfachgruppenFaecher> TblLehrfachgruppenFaecher { get; set; }
         public virtual DbSet<TblLehrfachwertigkeiten> TblLehrfachwertigkeiten { get; set; }
         public virtual DbSet<TblLehrfaecher> TblLehrfaecher { get; set; }
+        public virtual DbSet<TblPerioden> TblPerioden { get; set; }
         public virtual DbSet<TblPersonen> TblPersonen { get; set; }
         public virtual DbSet<TblRaeume> TblRaeume { get; set; }
         public virtual DbSet<TblRaumLehrfaecher> TblRaumLehrfaecher { get; set; }
@@ -47,15 +49,14 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
         public virtual DbSet<TblTurnusParameterwertezuordnungen> TblTurnusParameterwertezuordnungen { get; set; }
         public virtual DbSet<TblTurnuskonfigurationen> TblTurnuskonfigurationen { get; set; }
 
+        #endregion
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(_connectionString);
-                // "Server=HQDATABASES01\\MSSQL2016_DEV; Database=WkstStPlan;Trusted_Connection=True;MultipleActiveResultsets=True;"
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
@@ -73,12 +74,12 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
 
             modelBuilder.Entity<TblFreieTage>(entity =>
             {
-                entity.HasKey(e => new { e.SchuljahrId, e.Id })
+                entity.HasKey(e => new { e.PeriodeId, e.Id })
                     .HasName("pkFreieTage");
 
                 entity.ToTable("tblFreieTage");
 
-                entity.Property(e => e.SchuljahrId).HasColumnName("schuljahrId");
+                entity.Property(e => e.PeriodeId).HasColumnName("periodeId");
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
@@ -95,10 +96,10 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
                     .HasColumnName("ende")
                     .HasColumnType("date");
 
-                entity.HasOne(d => d.Schuljahr)
+                entity.HasOne(d => d.Periode)
                     .WithMany(p => p.TblFreieTage)
-                    .HasForeignKey(d => d.SchuljahrId)
-                    .HasConstraintName("fkFreieTageSchuljahr");
+                    .HasForeignKey(d => d.PeriodeId)
+                    .HasConstraintName("fkFreieTagePeriode");
             });
 
             modelBuilder.Entity<TblKlassen>(entity =>
@@ -543,6 +544,19 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
                     .HasConstraintName("fkLehrfachWertigkeitenId");
             });
 
+            modelBuilder.Entity<TblPerioden>(entity =>
+            {
+                entity.ToTable("tblPerioden");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Bezeichnung)
+                    .IsRequired()
+                    .HasColumnName("bezeichnung")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<TblPersonen>(entity =>
             {
                 entity.ToTable("tblPersonen");
@@ -687,24 +701,24 @@ namespace HtlWeiz.WkstPlaner.WkstPlanContext
                 entity.Property(e => e.Bezeichnung)
                     .IsRequired()
                     .HasColumnName("bezeichnung")
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Ende)
                     .HasColumnName("ende")
                     .HasColumnType("date");
 
-                entity.Property(e => e.EndeMatura)
-                    .HasColumnName("endeMatura")
-                    .HasColumnType("date");
+                entity.Property(e => e.PeriodeId).HasColumnName("periodeId");
 
                 entity.Property(e => e.Start)
                     .HasColumnName("start")
                     .HasColumnType("date");
 
-                entity.Property(e => e.StartFachschule)
-                    .HasColumnName("startFachschule")
-                    .HasColumnType("date");
+                entity.HasOne(d => d.Periode)
+                    .WithMany(p => p.TblSchuljahre)
+                    .HasForeignKey(d => d.PeriodeId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("fkSchuljahrPeriode");
             });
 
             modelBuilder.Entity<TblStundenDaten>(entity =>
